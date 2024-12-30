@@ -31,7 +31,8 @@ class signuppage : AppCompatActivity() {
 
             val user = loginDetails(nameT, usernameT, emailT, passwordT)
 
-            if(user.name.isNotEmpty() && user.username.isNotEmpty() && user.email.isNotEmpty() && user.password.isNotEmpty()){
+            if(user.name.isNotEmpty() && user.username.isNotEmpty()
+                && user.email.isNotEmpty() && user.password.isNotEmpty()){
                 if(passwordT.length<8) {
                     Toast.makeText(
                         this
@@ -47,28 +48,40 @@ class signuppage : AppCompatActivity() {
                         .show()
                 }
                 else {
-                    checkUsernameUnique(usernameT) { isUnique ->
-                        if (isUnique) {
-                            reference.child(usernameT).setValue(user).addOnSuccessListener {
-                                Toast.makeText(this, "Successfully registered", Toast.LENGTH_SHORT)
-                                    .show()
-                                val intent = Intent(this, loginpage::class.java)
-                                startActivity(intent)
-                                finish()
-                            }
-                            .addOnFailureListener {
-                                Toast.makeText(this, "Failed to register", Toast.LENGTH_SHORT)
-                                    .show()
-                            }
-                        } else {
-                            Toast.makeText(
-                                this,
-                                "Username already exists. Please choose another.",
-                                Toast.LENGTH_SHORT
-                            )
+                    reference.child(usernameT).setValue(user).addOnSuccessListener {
+                        Toast.makeText(this, "Successfully registered", Toast.LENGTH_SHORT)
+                            .show()
+                        val intent = Intent(this, loginpage::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                        .addOnFailureListener {
+                            Toast.makeText(this, "Failed to register", Toast.LENGTH_SHORT)
                                 .show()
                         }
-                    }
+//
+//                    checkUsernameUnique(usernameT) { isUnique ->
+//                        if (isUnique) {
+//                            reference.child(usernameT).setValue(user).addOnSuccessListener {
+//                                Toast.makeText(this, "Successfully registered", Toast.LENGTH_SHORT)
+//                                    .show()
+//                                val intent = Intent(this, loginpage::class.java)
+//                                startActivity(intent)
+//                                finish()
+//                            }
+//                            .addOnFailureListener {
+//                                Toast.makeText(this, "Failed to register", Toast.LENGTH_SHORT)
+//                                    .show()
+//                            }
+//                        } else {
+//                            Toast.makeText(
+//                                this,
+//                                "Username already exists. Please choose another.",
+//                                Toast.LENGTH_SHORT
+//                            )
+//                                .show()
+//                        }
+//                    }
                 }
 
             }
@@ -86,23 +99,23 @@ class signuppage : AppCompatActivity() {
         }
     }
 
-    fun checkUsernameUnique(username: String, onResult: (Boolean) -> Unit) {
-        val databaseReference = FirebaseDatabase.getInstance().getReference("users")
-
-        if (databaseReference != null) {
-            databaseReference.child(username).addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    onResult(!snapshot.exists()) // If it exists, it's not unique, so return false.
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    println("Database error: ${error.message}")
-                    onResult(false) // Treat cancellation as not unique for safety.
-                }
-            })
-        } else {
-            println("Database reference is null.")
-            onResult(false)
-        }
-    }
+//    fun checkUsernameUnique(username: String, onResult: (Boolean) -> Unit) {
+//        val databaseReference = FirebaseDatabase.getInstance().getReference("users")
+//
+//        if (databaseReference != null) {
+//            databaseReference.child(username).addListenerForSingleValueEvent(object : ValueEventListener {
+//                override fun onDataChange(snapshot: DataSnapshot) {
+//                    onResult(!snapshot.exists()) // If it exists, it's not unique, so return false.
+//                }
+//
+//                override fun onCancelled(error: DatabaseError) {
+//                    println("Database error: ${error.message}")
+//                    onResult(false) // Treat cancellation as not unique for safety.
+//                }
+//            })
+//        } else {
+//            println("Database reference is null.")
+//            onResult(false)
+//        }
+//    }
 }
