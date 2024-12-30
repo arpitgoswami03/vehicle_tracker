@@ -6,3 +6,10 @@ data class loginDetails(
     val email: String,
     val password: String
 )
+
+data class carDetails(
+    val name: String,
+    val model: String,
+    val number: String,
+    val image: String
+)
