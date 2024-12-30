@@ -11,5 +11,5 @@ data class carDetails(
     val name: String,
     val model: String,
     val number: String,
-    val image: String
+    val imageUrl: String
 )
