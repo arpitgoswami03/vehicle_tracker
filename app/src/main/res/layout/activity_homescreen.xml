@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -11,29 +11,20 @@
     <FrameLayout
         android:id="@+id/homefrag"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        android:layout_height="match_parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/homenavbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/bottomnav_height"
+        android:layout_alignParentBottom="true"
         android:background="@color/bargreen"
+        
         android:paddingVertical="5dp"
-        app:itemPaddingBottom="2dp"
-        app:itemIconSize="30dp"
+        app:itemIconSize="@dimen/nav_icon_size"
         app:itemIconTint="@color/nav_item_color"
+        app:itemPaddingBottom="5dp"
         app:itemTextColor="@color/nav_item_color"
-        app:menu="@menu/bottomnav"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:menu="@menu/bottomnav" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
