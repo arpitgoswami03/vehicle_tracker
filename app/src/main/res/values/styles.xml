@@ -1,3 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="BottomNavigationTextStyle" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemTextAppearanceActive">@style/BottomNavTextActive</item>
+        <item name="itemTextAppearanceInactive">@style/BottomNavTextInactive</item>
+    </style>
+
+    <style name="BottomNavTextActive" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/bottomnav_text_size_active</item>
+    </style>
+
+    <style name="BottomNavTextInactive" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/bottomnav_text_size_inactive</item>
+    </style>
+
 </resources>

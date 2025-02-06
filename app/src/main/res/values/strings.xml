@@ -21,4 +21,11 @@
     <string name="name">Name</string>
     <string name="signup">SignUp</string>
     <string name="email">Email</string>
+    <string name="add_car">Add Car</string>
+    <string name="garage">Garage</string>
+    <string name="map">Map</string>
+    <string name="add_vehicle">Add Vehicle</string>
+    <string name="enter_vehicle_model">Enter Vehicle Model</string>
+    <string name="enter_vehicle_name">Enter Vehicle Name</string>
+    <string name="close">Close</string>
 </resources>
