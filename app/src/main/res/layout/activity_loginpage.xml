@@ -24,8 +24,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:orientation="vertical"
-            android:paddingHorizontal="18dp"
-            android:paddingVertical="@dimen/cardview_padding">
+            android:paddingHorizontal="@dimen/cardview_padding_horizontal"
+            android:paddingVertical="@dimen/cardview_padding_vertical" >
 
 
             <TextView
