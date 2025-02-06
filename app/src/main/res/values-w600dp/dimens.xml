@@ -1,3 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="activity_horizontal_margin">48dp</dimen>
+
+    //icon size
+    <dimen name="icon_size">28dp</dimen>
+    <dimen name="add_icon_size">30dp</dimen>
+    <dimen name="camera_icon_size">40dp</dimen>
+    //splash screen properties
+    <dimen name="title_bottom_margin">5dp</dimen>
+    <dimen name="image_top_margin">200dp</dimen>
+    <dimen name="descrip_bottom_margin">-48dp</dimen>
+    <dimen name="title_size">30sp</dimen>
+    <dimen name="descrip_size">20sp</dimen>
+    <dimen name="image_height">300dp</dimen>
+
+    //login page properties
+    <dimen name="cardview_margin_Vertical">200dp</dimen>
+    <dimen name="cardview_margin_Horizontal">80dp</dimen>
+    <dimen name="cardview_padding_vertical">15dp</dimen>
+    <dimen name="cardview_padding_horizontal">20dp</dimen>
+    <dimen name="edit_text_height">70dp</dimen>
+    <dimen name="edit_text_margin">15dp</dimen>
+    <dimen name="login_text_size">65sp</dimen>
+    <dimen name="edit_text_size">33sp</dimen>
+    <dimen name="signup_btn_text_size">20sp</dimen>
+    <dimen name="login_btn_text_size">32sp</dimen>
+    <dimen name="checkbox_text_size">25sp</dimen>
+    <dimen name="login_btn_height">80dp</dimen>
+
+    //signup page properties
+    <dimen name="cardview_sign_margin_Vertical">150dp</dimen>
+    <dimen name="button_text_margin">30dp</dimen>
+    <dimen name="edit_text_margin_signup">20dp</dimen>
+
+    //homescreen properties
+    <dimen name="bottomnav_height">90dp</dimen>
+    <dimen name="nav_icon_size_active">25dp</dimen>
+    <dimen name="nav_icon_size_inactive">35dp</dimen>
+    <dimen name="nav_padding">7dp</dimen>
+    <dimen name="fab_size">100dp</dimen>
+    <dimen name="fab_top_margin">-90dp</dimen>
+    <dimen name="fab_end_margin">25dp</dimen>
+    <dimen name="bottomnav_text_size_active">17sp</dimen>
+    <dimen name="bottomnav_text_size_inactive">14sp</dimen>
+
+    //addcar properties
+    <dimen name="car_image_size">260dp</dimen>
+    <dimen name="addcar_text_size">45sp</dimen>
+    <dimen name="addcar_edit_text_size">21sp</dimen>
+    <dimen name="addcar_btn_size">75dp</dimen>
+    <dimen name="addcar_fab_size">65sp</dimen>
+    <dimen name="addcar_btn_text_size">23sp</dimen>
+    <dimen name="add_cardview_margin_Vertical">50dp</dimen>
+    <dimen name="add_cardview_margin_Horizontal">70dp</dimen>
+    <dimen name="close_btn_marginTop"></dimen>
+    <dimen name="close_btn_marginEnd"></dimen>
+
 </resources>
