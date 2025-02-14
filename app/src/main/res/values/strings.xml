@@ -28,4 +28,5 @@
     <string name="enter_vehicle_model">Enter Vehicle Model</string>
     <string name="enter_vehicle_name">Enter Vehicle Name</string>
     <string name="close">Close</string>
+    <string name="add_cars">Add cars</string>
 </resources>

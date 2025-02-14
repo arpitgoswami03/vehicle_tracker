@@ -5,8 +5,6 @@
     <dimen name="icon_size">24dp</dimen>
     <dimen name="add_icon_size">24dp</dimen>
     <dimen name="camera_icon_size">40dp</dimen>
-    <dimen name="camera_width_size">40dp</dimen>
-    <dimen name="camera_height_size">40dp</dimen>
 
     //splash screen properties
     <dimen name="title_bottom_margin">16dp</dimen>
@@ -40,7 +38,6 @@
     <dimen name="nav_icon_size_inactive">35dp</dimen>
     <dimen name="nav_icon_size_active">35dp</dimen>
     <dimen name="nav_padding">3dp</dimen>
-    <dimen name="fab_size">100dp</dimen>
     <dimen name="fab_top_margin">-100dp</dimen>
     <dimen name="fab_end_margin">20dp</dimen>
     <dimen name="bottomnav_text_size_active">14sp</dimen>
@@ -55,7 +52,10 @@
     <dimen name="addcar_fab_size">25sp</dimen>
     <dimen name="add_cardview_margin_Vertical">50dp</dimen>
     <dimen name="add_cardview_margin_Horizontal">20dp</dimen>
-    <dimen name="close_btn_marginTop"></dimen>
-    <dimen name="close_btn_marginEnd"></dimen>
+    <dimen name="close_btn_marginTop">10dp</dimen>
+    <dimen name="close_btn_marginEnd">10dp</dimen>
+
+    //carlist_rv properties
+    <dimen name="carlist_text">30sp</dimen>
 
 </resources>
