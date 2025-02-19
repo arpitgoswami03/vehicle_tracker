@@ -15,6 +15,7 @@ class splashscreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashscreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         handler.postDelayed(
             {
                 val intent = Intent(this,loginpage::class.java)
