@@ -8,37 +8,44 @@
     android:background="@color/bggreen"
     tools:context=".homescreen">
 
-    <FrameLayout
-        android:id="@+id/homefrag"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bargreen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/bottomnav"
+        app:title="Your Name"
+        app:navigationIcon="@drawable/baseline_person_pin_24"
+        app:maxButtonHeight="45dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/car_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_above="@+id/homenavbar"
-        app:layout_constraintBottom_toTopOf="@+id/homenavbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/homenavbar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/bottomnav_height"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:background="@color/bargreen"
-        android:paddingVertical="@dimen/nav_padding"
-        app:itemIconSize="@dimen/nav_icon_size_inactive"
-        app:itemIconTint="@color/nav_item_color"
-        app:itemTextAppearanceActive="@style/BottomNavTextActive"
-        app:itemTextAppearanceInactive="@style/BottomNavTextInactive"
-        app:itemTextColor="@color/nav_item_color"
-        app:labelVisibilityMode="labeled"
+        android:paddingVertical="15dp"
+        android:paddingHorizontal="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottomnav" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addcarBtn"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="36dp"
+        android:backgroundTint="@color/bargreen"
+        android:contentDescription="@string/add_car"
+        android:src="@drawable/baseline_add_24"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:maxImageSize="@dimen/add_icon_size" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
