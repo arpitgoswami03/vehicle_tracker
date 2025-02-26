@@ -7,7 +7,7 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:599576532818:android:1fff9149105939acd18c8b",
+        "mobilesdk_app_id": "",
         "android_client_info": {
           "package_name": "com.example.vehicletracking"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDke5m0Psjr6o3LmvK2jXegGhtEKrTaURQ"
+          "current_key": ""
         }
       ],
       "services": {
