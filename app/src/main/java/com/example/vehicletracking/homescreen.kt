@@ -1,39 +1,110 @@
 package com.example.vehicletracking
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.vehicletracking.adapter.garage_car_adapter
+import com.example.vehicletracking.data_class.carDetails
 import com.example.vehicletracking.databinding.ActivityHomescreenBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class homescreen : AppCompatActivity() {
-    private lateinit var binding : ActivityHomescreenBinding
+    private lateinit var binding: ActivityHomescreenBinding
+    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+    private val firebaseDB: DatabaseReference = FirebaseDatabase.getInstance()
+        .getReference("Users")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar?.title = "Vehicle Tracker"
         binding = ActivityHomescreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val currentUser = FirebaseAuth.getInstance().currentUser?.email.toString()
-        Log.i("currentUser", currentUser)
-        binding.homenavbar.selectedItemId = R.id.garage
-        binding.homenavbar.setOnItemSelectedListener {
+        val currentMail = firebaseAuth.currentUser?.email.toString()
+        getUsername(currentMail) { username ->
+            if (username != null) {
+                binding.userName.text = username
+                setUpCarList(username)
+            } else {
+                Toast.makeText(
+                    this, "Unable to fetch userdata", Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+        binding.addcarBtn.setOnClickListener {
+            val intent = Intent(this, addcarPage::class.java)
+            startActivity(intent)
+        }
+        binding.toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
-                R.id.map -> setFragment(mapFragment())
-                R.id.garage -> setFragment(garageFragment())
-                R.id.profile -> setFragment(profileFragment())
+                R.id.map -> startActivity(
+                    Intent(this, mapspage::class.java)
+                )
+
+                R.id.logout -> {
+                    firebaseAuth.signOut()
+                    startActivity(
+                        Intent(this, loginpage::class.java)
+                    )
+                    finish()
+                }
             }
             true
         }
+        binding.profileArea.setOnClickListener {
+            val intent = Intent(this, profilepage::class.java)
+            startActivity(intent)
+        }
     }
-    private fun setFragment(fragment: Fragment){
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.main, fragment)
-            .commit()
+
+    private fun getUsername(currentUserEmail: String, callback: (String?) -> Unit) {
+        firebaseDB.orderByChild("email").equalTo(currentUserEmail)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val username = snapshot.children.firstOrNull()
+                        ?.child("username")
+                        ?.getValue(String::class.java)
+                    Log.i("Firebase", "Username found: $username")
+                    callback(username)
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.e("Firebase", "Database error: ${error.message}")
+                    callback(null)
+                }
+            })
+    }
+
+    private fun setUpCarList(username: String) {
+        firebaseDB.child(username).child("Car Available")
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val carList = snapshot.children.mapNotNull {
+                        it.getValue(carDetails::class.java)
+                    }.toMutableList()
+                    setCarRV(carList)
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.e("FirebaseError", "Database error: ${error.message}")
+                }
+
+            })
+
+    }
+
+    private fun setCarRV(carList: MutableList<carDetails>) {
+        val adapter = garage_car_adapter(carList)
+        binding.carRv.layoutManager = LinearLayoutManager(
+            this, LinearLayoutManager.VERTICAL, false
+        )
+        binding.carRv.adapter = adapter
     }
 }
