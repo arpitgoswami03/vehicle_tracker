@@ -37,8 +37,8 @@ class garage_car_adapter(private val carList: List<carDetails>) :
         Glide.with(holder.carImage)
             .load(car.imageUrl)
             .into(holder.carImage)
-        holder.carName.text = "${car.name} ${car.model}"
-        holder.carNum.text = car.number
+        holder.carName.text = "Vehicle name: ${car.name} ${car.model}"
+        holder.carNum.text = "Vehicle no.: ${car.number}"
     }
 
 }
