@@ -1,8 +1,8 @@
 package com.example.vehicletracking
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.vehicletracking.databinding.ActivityLoginpageBinding
@@ -11,7 +11,6 @@ import com.google.firebase.database.FirebaseDatabase
 
 class loginpage : AppCompatActivity() {
     private lateinit var binding: ActivityLoginpageBinding
-    private lateinit var sharedPreferences: SharedPreferences
     private val database = FirebaseDatabase.getInstance()
     private val reference = database.getReference("Users")
     private val authenticator = FirebaseAuth.getInstance()
@@ -21,7 +20,6 @@ class loginpage : AppCompatActivity() {
         binding = ActivityLoginpageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
         binding.signupGo.setOnClickListener {
             val intent = Intent(this, signuppage::class.java)
             startActivity(intent)
@@ -32,12 +30,9 @@ class loginpage : AppCompatActivity() {
 
             if (emailT.isNotEmpty() && passwordT.isNotEmpty()) {
                 loginWithFirebase(emailT, passwordT)
-            }
-            else {
+            } else {
                 Toast.makeText(
-                    this
-                    , "Please fill all the fields"
-                    , Toast.LENGTH_SHORT
+                    this, "Please fill all the fields", Toast.LENGTH_SHORT
                 )
                     .show()
 
@@ -46,28 +41,28 @@ class loginpage : AppCompatActivity() {
     }
 
     private fun loginWithFirebase(emailT: String, passwordT: String) {
-        authenticator.signInWithEmailAndPassword(emailT,passwordT)
+        authenticator.signInWithEmailAndPassword(emailT, passwordT)
             .addOnSuccessListener {
-                Toast.makeText(this
-                    ,"Login Successful"
-                    ,Toast.LENGTH_SHORT
+                Toast.makeText(
+                    this, "Login Successful", Toast.LENGTH_SHORT
                 ).show()
-                startActivity(Intent(applicationContext,homescreen::class.java))
+                startActivity(Intent(applicationContext, homescreen::class.java))
                 finish()
             }
             .addOnFailureListener {
-                Toast.makeText(this
-                    ,"Login Failed"
-                    ,Toast.LENGTH_SHORT
+                Toast.makeText(
+                    this, "Login Failed", Toast.LENGTH_SHORT
                 ).show()
             }
     }
 
     override fun onResume() {
         super.onResume()
-        authenticator.currentUser?.apply {
-                startActivity(Intent(applicationContext, homescreen::class.java))
-                finish()
+        val username = authenticator.currentUser
+        Log.e("FirebaseL", "$username")
+        if (username != null) {
+            startActivity(Intent(applicationContext, homescreen::class.java))
+            finish()
         }
     }
 
