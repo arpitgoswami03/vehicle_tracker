@@ -1,26 +1,17 @@
 package com.example.vehicletracking
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.example.vehicletracking.databinding.FragmentGarageBinding
-import com.example.vehicletracking.databinding.FragmentProfileBinding
+import androidx.appcompat.app.AppCompatActivity
+import com.example.vehicletracking.databinding.ActivityProfilepageBinding
 
-class profileFragment : Fragment() {
+class profilepage : AppCompatActivity(){
+    private lateinit var binding: ActivityProfilepageBinding
 
-    private lateinit var binding: FragmentProfileBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-    }
+        binding = ActivityProfilepageBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
 
-        binding = FragmentProfileBinding.inflate(layoutInflater)
-        return binding.root
     }
 }
