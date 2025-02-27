@@ -17,24 +17,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+        <view
             android:id="@+id/cancel_btn"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_gravity="center_vertical"
-            android:contentDescription="@string/cancel"
-            android:src="@drawable/baseline_close_24" />
-
-        <TextView
-            android:id="@+id/cancel_txt"
+            class="android.widget.LinearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:paddingStart="5dp"
-            android:paddingEnd="0dp"
-            android:text="@string/cancel"
-            android:textSize="25sp" />
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal">
 
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/cancel"
+                android:paddingTop="1dp"
+                android:src="@drawable/baseline_close_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingStart="2dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="3dp"
+                android:text="@string/cancel"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+        </view>
     </androidx.appcompat.widget.Toolbar>
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -55,7 +65,7 @@
         android:id="@+id/addImg"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:backgroundTint="#414141"
+        android:backgroundTint="@color/white"
         android:contentDescription="@string/add_vehicle_image"
         android:elevation="40dp"
         android:scaleType="center"
@@ -80,7 +90,7 @@
         android:gravity="center_vertical"
         android:hint="@string/enter_vehicle_name"
         android:padding="18dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textColorHighlight="@color/cardview_dark_background"
         android:textColorHint="#6D6B6B"
         android:textSize="25sp"
@@ -97,7 +107,7 @@
         android:gravity="center_vertical"
         android:hint="@string/enter_vehicle_model"
         android:padding="18dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textColorHighlight="@color/cardview_dark_background"
         android:textColorHint="#6D6B6B"
         android:textSize="25sp"
@@ -114,7 +124,7 @@
         android:gravity="center_vertical"
         android:hint="@string/enter_vehicle_number"
         android:padding="18dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textColorHighlight="@color/cardview_dark_background"
         android:textColorHint="#6D6B6B"
         android:textSize="25sp"
